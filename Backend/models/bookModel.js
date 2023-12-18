@@ -5,7 +5,8 @@ const bookSchema = new mongoose.Schema({
   author: String,
   publicationYear: Number,
   genre: String,
-  // Add other fields as needed
+  price: Number,
+  qty: Number,
 });
 
 const Book = mongoose.model('Book', bookSchema, 'books');
