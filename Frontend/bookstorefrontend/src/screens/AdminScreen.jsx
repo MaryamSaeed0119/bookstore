@@ -2,14 +2,18 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 const AdminScreen = () => {
-    const [books,setBooks] = useState([]);
+    const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        const response = axios.get("localhost:3000/api/books");
-        if (response != null){
-            setBooks(response.data);
-            console.log(response.data);
+        async function getBooks() {
+            const response = await axios.get("https://fluffy-guide-v6v7w9qj7579hxwwp-3000.app.github.dev/api/books");
+            if (response != null) {
+                setBooks(response.data);
+                console.log(response.data);
+            }
         }
+        getBooks();
+
     }, [])
 
     return (
@@ -18,3 +22,5 @@ const AdminScreen = () => {
         </div>
     )
 }
+
+export default AdminScreen;
