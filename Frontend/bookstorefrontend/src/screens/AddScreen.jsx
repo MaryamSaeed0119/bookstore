@@ -6,7 +6,7 @@ const AddScreen = () => {
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const [genre, setGenre] = useState('');
-    const [publishYear, setPublishYear] = useState(0);
+    const [publicationYear, setPublishYear] = useState(0);
     const [price, setPrice] = useState(0);
     const [qty, setQty] = useState(0);
 
@@ -15,7 +15,7 @@ const AddScreen = () => {
         // You can use the state variables (title, author, genre, publishYear, price, qty) to access the entered values
         async function addBook(){
             try {
-                const response = await axios.post("http://localhost:3000/api/books", {title, author, genre, publishYear, price, qty});
+                const response = await axios.post("http://localhost:3000/api/books", {title, author, genre, publicationYear, price, qty});
                 window.location.replace("http://localhost:5173/admin");
             } catch (error) {
                 console.log(error)
@@ -66,7 +66,7 @@ const AddScreen = () => {
                             <Form.Control
                                 type="text"
                                 placeholder="Enter publish year"
-                                value={publishYear}
+                                value={publicationYear}
                                 onChange={(e) => setPublishYear(e.target.value)}
                             />
                         </Form.Group>
