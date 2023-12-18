@@ -2,13 +2,13 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
 
-const UpdateScreen = () => {
-    const [title, setTitle] = useState('');
-    const [author, setAuthor] = useState('');
-    const [genre, setGenre] = useState('');
-    const [publishYear, setPublishYear] = useState(0);
-    const [price, setPrice] = useState(0);
-    const [qty, setQty] = useState(0);
+const UpdateScreen = (props) => {
+    const [title, setTitle] = useState(props.title);
+    const [author, setAuthor] = useState(props.author);
+    const [genre, setGenre] = useState(props.genre);
+    const [publishYear, setPublishYear] = useState(props.publishYear);
+    const [price, setPrice] = useState(props.price);
+    const [qty, setQty] = useState(props.qty);
 
     const handleUpdateBook = () => {
         // Logic to add the book with the entered details
@@ -92,7 +92,7 @@ const UpdateScreen = () => {
                         </Form.Group>
                         <br>
                         </br>
-                        <Button variant="primary" onClick={handleAddBook}>
+                        <Button variant="primary" onClick={handleUpdateBook}>
                             Update Book
                         </Button>
                     </Form>
