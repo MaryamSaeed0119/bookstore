@@ -6,10 +6,10 @@ const AdminScreen = () => {
 
     useEffect(() => {
         async function getBooks() {
-            const response = await axios.get("https://fluffy-guide-v6v7w9qj7579hxwwp-3000.app.github.dev/api/books");
+            const response = await axios.get("http://localhost:3000/api/books");
             if (response != null) {
                 setBooks(response.data);
-                console.log(response.data);
+                console.log(response);
             }
         }
         getBooks();
@@ -18,7 +18,17 @@ const AdminScreen = () => {
 
     return (
         <div>
-
+            {
+                books.map((book) => (
+                    <div key={book.id}>
+                        <h3>{book.title}</h3>
+                        <p>{book.author}</p>
+                        <p>{book.publicationYear}</p>
+                        <p>{book.qty}</p>
+                        <p>{book.price}</p>
+                    </div>
+                ))
+            }
         </div>
     )
 }
