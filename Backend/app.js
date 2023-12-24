@@ -1,24 +1,23 @@
-import { useState } from 'react'
+const express = require('express');
+const cors = require('cors'); // Add this line
+const connection = require('./db.js')
+const bodyParser = require('body-parser');
+const bookRouter = require('../Backend/routes/bookRoute.js')
 
-import AdminScreen from './screens/AdminScreen';
-import AddScreen from './screens/AddScreen';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import UpdateScreen from './screens/UpdateScreen';
 
-function App() {
-  const [count, setCount] = useState(0);
+app = express();
+connection();
+app.use(cors({
+  origin: "https://fluffy-guide-v6v7w9qj7579hxwwp-5173.app.github.dev",
+  credentials: true,
+  allowedHeaders: ['content-type']
+}));
 
-  return (
-    <BrowserRouter>
+app.use(bodyParser.json());
 
-      <Routes>
-        <Route path = "/" > </Route>
-        <Route path = "/admin" element = {<AdminScreen/>} > </Route>
-        <Route path = "/admin/add" element = {<AddScreen/>} > </Route>
-        <Route path = "/admin/update" element = {<UpdateScreen/>} > </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-}
 
-export default App
+app.use("/api", bookRouter);
+
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+})
