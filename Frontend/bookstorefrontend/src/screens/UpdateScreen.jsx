@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
 
 const UpdateScreen = (props) => {
+    console.log(props.title);
     const [title, setTitle] = useState(props.title);
     const [author, setAuthor] = useState(props.author);
     const [genre, setGenre] = useState(props.genre);
@@ -16,7 +17,7 @@ const UpdateScreen = (props) => {
         async function updateBook(){
             try {
                 const response = await axios.post("http://localhost:3000/api/books", {title, author, genre, publishYear, price, qty});
-                window.location.replace("http://localhost:5173/admin");
+                window.location.replace("http://localhost:5173/");
             } catch (error) {
                 console.log(error)
             }
@@ -26,7 +27,7 @@ const UpdateScreen = (props) => {
     };
 
     return (
-        <div style={{'paddingLeft':'100%'}}>
+        <div>
             <h1>Update Book</h1>
             <Card style={{ width: '35rem', boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)' }}>
                 <Card.Body>

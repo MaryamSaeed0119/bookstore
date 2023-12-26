@@ -16,7 +16,7 @@ const AddScreen = () => {
         async function addBook(){
             try {
                 const response = await axios.post("http://localhost:3000/api/books", {title, author, genre, publicationYear, price, qty});
-                window.location.replace("http://localhost:5173/admin");
+                window.location.replace("http://localhost:5173/");
             } catch (error) {
                 console.log(error)
             }
